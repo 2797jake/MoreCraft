@@ -38,3 +38,5 @@ tile.LED.name=LED
 tile.Moonstone.name=Moonstone
 tile.Sunstone.name=Sunstone
 tile.Spectrum.name=Spectrum Block
+tile.PlutoniumOre.name=Plutonium Ore
+item.Plutonium.name=1 Gram of Plutonium
