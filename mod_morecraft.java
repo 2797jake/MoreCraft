@@ -37,6 +37,7 @@ import net.minecraft.src.joakleymorecraft.morelights.Lantern;
 import net.minecraft.src.joakleymorecraft.morelights.Moonstone;
 import net.minecraft.src.joakleymorecraft.morelights.Spectrum;
 import net.minecraft.src.joakleymorecraft.morelights.Sunstone;
+import net.minecraft.src.joakleymorecraft.nuclear.Drill;
 import net.minecraft.src.joakleymorecraft.nuclear.Plutonium;
 import net.minecraft.src.joakleymorecraft.nuclear.PlutoniumOre;
 import net.minecraft.src.joakleymorecraft.stonevarients.DarkCarvedStoneBrick;
@@ -130,7 +131,11 @@ public class mod_morecraft
 	public static Block PlutoniumOre;
 	
 	public static Item Plutonium;
+	public static ToolMaterial DrillMaterial = EnumHelper.addToolMaterial("DrillMaterial", 4/*mines obsidian*/, 4000/*max uses*/, 15F/*efficiency*/, 2/*damage*/, 20/*enchantability*/);
 	
+	public static Item Drill = new Drill(DrillMaterial).setUnlocalizedName("Drill");
+	
+	//public static Item CDia;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -387,7 +392,23 @@ public class mod_morecraft
 		
 		Plutonium = new Plutonium().setUnlocalizedName("Plutonium").setTextureName("joakley_morecraft:Plutonium");
 		GameRegistry.registerItem(Plutonium, "Plutonium");
-
+		
+		
+		Drill = new Drill(DrillMaterial).setUnlocalizedName("Drill").setTextureName("joakley_morecraft:Drill");
+		GameRegistry.registerItem(Drill,  "Drill");
+		
+		
+		GameRegistry.addRecipe(new ItemStack(Drill, 1), new Object [] {
+			"TOO",
+			"IPO",
+			"TIT"
+			,'O', Blocks.obsidian, 'P', Plutonium, 'I', Item.getItemById(265), 'T', Items.diamond});
+		
+		
+		/*CDia = new CDia().setUnlocalizedName("CDia").setTextureName("joakley_morecraft:CDia");
+		GameRegistry.registerItem(CDia, "CDia");
+		GameRegistry.addShapelessRecipe(new ItemStack(CDia), new ItemStack(Items.diamond),new ItemStack(Items.diamond),new ItemStack(Items.diamond),new ItemStack(Items.diamond));
+*/
 ;
 }
 	
