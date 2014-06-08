@@ -39,7 +39,7 @@ public class OreGeneration implements IWorldGenerator
 			int firstBlockYCoordd = random.nextInt(64);//256, max y coordinate
 			int firstBlockZCoordd = j + random.nextInt(16);
 			
-			(new WorldGenMinable(mod_morecraft.BerylOre, 4)).generate(world, random, firstBlockXCoordd, firstBlockYCoordd, firstBlockZCoordd);
+			(new WorldGenMinable(mod_morecraft.BerylOre, 4/*vein size*/)).generate(world, random, firstBlockXCoordd, firstBlockYCoordd, firstBlockZCoordd);
 		}
 		
 		

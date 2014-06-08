@@ -1,7 +1,5 @@
 package net.minecraft.src.joakleymorecraft;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockSlab;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -9,11 +7,11 @@ import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.src.joakleymorecraft.beryl.BerylAxeClass;
 import net.minecraft.src.joakleymorecraft.beryl.BerylHoeClass;
+import net.minecraft.src.joakleymorecraft.beryl.BerylIngot;
 import net.minecraft.src.joakleymorecraft.beryl.BerylPickaxeClass;
 import net.minecraft.src.joakleymorecraft.beryl.BerylShovelClass;
 import net.minecraft.src.joakleymorecraft.beryl.BerylSwordClass;
 import net.minecraft.src.joakleymorecraft.beryl.BlockBerylOre;
-import net.minecraft.src.joakleymorecraft.beryl.BerylIngot;
 import net.minecraft.src.joakleymorecraft.bricks.Blue;
 import net.minecraft.src.joakleymorecraft.bricks.Green;
 import net.minecraft.src.joakleymorecraft.bricks.Purple;
@@ -40,6 +38,22 @@ import net.minecraft.src.joakleymorecraft.morelights.Sunstone;
 import net.minecraft.src.joakleymorecraft.nuclear.Drill;
 import net.minecraft.src.joakleymorecraft.nuclear.Plutonium;
 import net.minecraft.src.joakleymorecraft.nuclear.PlutoniumOre;
+import net.minecraft.src.joakleymorecraft.staffs.BlazeStaff;
+import net.minecraft.src.joakleymorecraft.staffs.ChickenStaff;
+import net.minecraft.src.joakleymorecraft.staffs.CowStaff;
+import net.minecraft.src.joakleymorecraft.staffs.CreeperStaff;
+import net.minecraft.src.joakleymorecraft.staffs.EndermanStaff;
+import net.minecraft.src.joakleymorecraft.staffs.HorseStaff;
+import net.minecraft.src.joakleymorecraft.staffs.IronGolemStaff;
+import net.minecraft.src.joakleymorecraft.staffs.LightStaff;
+import net.minecraft.src.joakleymorecraft.staffs.OcelotStaff;
+import net.minecraft.src.joakleymorecraft.staffs.PigStaff;
+import net.minecraft.src.joakleymorecraft.staffs.SheepStaff;
+import net.minecraft.src.joakleymorecraft.staffs.SkeletonStaff;
+import net.minecraft.src.joakleymorecraft.staffs.SnowmanStaff;
+import net.minecraft.src.joakleymorecraft.staffs.SpiderStaff;
+import net.minecraft.src.joakleymorecraft.staffs.WolfStaff;
+import net.minecraft.src.joakleymorecraft.staffs.ZombieStaff;
 import net.minecraft.src.joakleymorecraft.stonevarients.DarkCarvedStoneBrick;
 import net.minecraft.src.joakleymorecraft.stonevarients.DarkStone;
 import net.minecraft.src.joakleymorecraft.stonevarients.DarkStoneBrick;
@@ -53,14 +67,25 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.creativetab.CreativeTabs;
 @Mod(modid = mod_morecraft.modid, version = mod_morecraft.version)
 public class mod_morecraft
 {
 	public static final String modid = "joakley_morecraft";
 	public static final String version = "1.0 MC1.7.2";
-	
+	/*@Instance(modid)
+	public static SuperZombie instance;
+	@SidedProxy(clientSide="net.minecraft.src.joakleymorecraft.proxy.ClientProxy", serverSide="net.minecraft.src.joakleymorecraft.proxy.CommonProxy")
+	public static CommonProxy proxy;*/
 
-	
+
+/*@EventHandler
+public static void PreLoad(FMLPreInitializationEvent PreEvent){
+	SZEntity.mainRegistry();
+}*/
+
+
+
 	public static OreGeneration EXPOreWorldGen = new OreGeneration();
 	
 	public static Block BerylOre;
@@ -135,14 +160,49 @@ public class mod_morecraft
 	
 	public static Item Drill = new Drill(DrillMaterial).setUnlocalizedName("Drill");
 	
+	public static Item LightStaff = new LightStaff().setUnlocalizedName("LightStaff").setTextureName(modid + ":LightStaff").setCreativeTab(CreativeTabs.tabMisc);
+	public static Item BlazeStaff = new BlazeStaff().setUnlocalizedName("BlazeStaff").setTextureName(modid + ":BlazeStaff").setCreativeTab(CreativeTabs.tabMisc);
+	public static Item CreeperStaff = new CreeperStaff().setUnlocalizedName("CreeperStaff").setTextureName(modid + ":CreeperStaff").setCreativeTab(CreativeTabs.tabMisc);
+
+	public static Item EndermanStaff = new EndermanStaff().setUnlocalizedName("EndermanStaff").setTextureName(modid + ":EndermanStaff").setCreativeTab(CreativeTabs.tabMisc);
+
+	public static Item IronGolemStaff = new IronGolemStaff().setUnlocalizedName("IronGolemStaff").setTextureName(modid + ":IronGolemStaff").setCreativeTab(CreativeTabs.tabMisc);
+//
+	public static Item PigStaff = new PigStaff().setUnlocalizedName("PigStaff").setTextureName(modid + ":PigStaff").setCreativeTab(CreativeTabs.tabMisc);
+//
+	public static Item SkeletonStaff = new SkeletonStaff().setUnlocalizedName("SkeletonStaff").setTextureName(modid + ":SkeletonStaff").setCreativeTab(CreativeTabs.tabMisc);
+//
+	public static Item SnowmanStaff = new SnowmanStaff().setUnlocalizedName("SnowmanStaff").setTextureName(modid + ":SnowmanStaff").setCreativeTab(CreativeTabs.tabMisc);
+//
+	public static Item SpiderStaff = new SpiderStaff().setUnlocalizedName("SpiderStaff").setTextureName(modid + ":SpiderStaff").setCreativeTab(CreativeTabs.tabMisc);
+//
+	public static Item ZombieStaff = new ZombieStaff().setUnlocalizedName("ZombieStaff").setTextureName(modid + ":ZombieStaff").setCreativeTab(CreativeTabs.tabMisc);
+	public static Item ChickenStaff = new ChickenStaff().setUnlocalizedName("ChickenStaff").setTextureName(modid + ":ChickenStaff").setCreativeTab(CreativeTabs.tabMisc);
+
+	public static Item CowStaff = new CowStaff().setUnlocalizedName("CowStaff").setTextureName(modid + ":CowStaff").setCreativeTab(CreativeTabs.tabMisc);
+	public static Item WolfStaff = new WolfStaff().setUnlocalizedName("WolfStaff").setTextureName(modid + ":WolfStaff").setCreativeTab(CreativeTabs.tabMisc);
+	public static Item HorseStaff = new HorseStaff().setUnlocalizedName("HorseStaff").setTextureName(modid + ":HorseStaff").setCreativeTab(CreativeTabs.tabMisc);
+	public static Item OcelotStaff = new OcelotStaff().setUnlocalizedName("OcelotStaff").setTextureName(modid + ":OcelotStaff").setCreativeTab(CreativeTabs.tabMisc);
+	public static Item SheepStaff = new SheepStaff().setUnlocalizedName("SheepStaff").setTextureName(modid + ":SheepStaff").setCreativeTab(CreativeTabs.tabMisc);
+
 	//public static Item CDia;
+	
+
+	/*public static void registerEntity(Class entityClass, String name)
+	{
+		int entityID = EntityRegistry.findGlobalUniqueEntityId();
+		long seed = name.hashCode();
+		Random rand = new Random(seed);
+		int PrimaryColor = rand.nextInt() * 16777215;
+		int SecondaryColor = rand.nextInt() * 16777215;
+		EntityRegistry.registerGlobalEntityID(entityClass, name, entityID);
+		EntityRegistry.registerModEntity(entityClass, name, entityID, instance, 64, 1, true);
+	}*/
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-
-		
-		
+		//registerEntity(SuperZombie.class, "SuperZombie");
 		
 		BerylOre = new BlockBerylOre().setBlockName("BerylOre").setBlockTextureName(modid + ":" + "BerylOre");
 		GameRegistry.registerBlock(BerylOre, "BerylOre");
@@ -158,7 +218,7 @@ public class mod_morecraft
 			"XX ",
 			"XI ",
 			" I "
-			,'X', BerylIngot, 'I', Item.itemRegistry.getObject("stick")});
+			,'X', BerylIngot, 'I', Items.stick});
 
 		
 		BerylPickaxe = new BerylPickaxeClass(BerylMaterial).setUnlocalizedName("BerylPickaxe").setTextureName("joakley_morecraft:BerylPickaxe");
@@ -185,6 +245,8 @@ public class mod_morecraft
 			" X ",
 			" I "
 			,'X', BerylIngot, 'I', Item.itemRegistry.getObject("stick")});
+		
+		
 		
 		BerylShovel = new BerylShovelClass(BerylMaterial).setUnlocalizedName("BerylShovel").setTextureName("joakley_morecraft:BerylShovel");
 		GameRegistry.registerItem(BerylShovel,  "BerylShovel");
@@ -405,11 +467,39 @@ public class mod_morecraft
 			,'O', Blocks.obsidian, 'P', Plutonium, 'I', Item.getItemById(265), 'T', Items.diamond});
 		
 		
+		
+		
+		GameRegistry.registerItem(LightStaff, "LightStaff");
+		GameRegistry.registerItem(BlazeStaff, "BlazeStaff");
+		GameRegistry.registerItem(CreeperStaff, "CreeperStaff");
+		GameRegistry.registerItem(EndermanStaff, "EndermanStaff");
+		GameRegistry.registerItem(IronGolemStaff, "IronGolemStaff");
+		GameRegistry.registerItem(PigStaff, "PigStaff");
+		GameRegistry.registerItem(SkeletonStaff, "SkeletonStaff");
+		GameRegistry.registerItem(SnowmanStaff, "SnowmanStaff");
+		GameRegistry.registerItem(SpiderStaff, "SpiderStaff");
+		GameRegistry.registerItem(ZombieStaff, "ZombieStaff");
+		GameRegistry.registerItem(ChickenStaff, "ChickenStaff");
+		GameRegistry.registerItem(CowStaff, "CowStaff");
+		GameRegistry.registerItem(WolfStaff, "WolfStaff");
+		GameRegistry.registerItem(HorseStaff, "HorseStaff");
+		GameRegistry.registerItem(OcelotStaff, "OcelotStaff");
+		GameRegistry.registerItem(SheepStaff, "SheepStaff");
 		/*CDia = new CDia().setUnlocalizedName("CDia").setTextureName("joakley_morecraft:CDia");
 		GameRegistry.registerItem(CDia, "CDia");
 		GameRegistry.addShapelessRecipe(new ItemStack(CDia), new ItemStack(Items.diamond),new ItemStack(Items.diamond),new ItemStack(Items.diamond),new ItemStack(Items.diamond));
 */
-;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//proxy.registerRenderers();
+		
 }
 	
 	
