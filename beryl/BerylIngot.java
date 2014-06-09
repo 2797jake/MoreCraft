@@ -7,7 +7,6 @@ public class BerylIngot extends Item
 {
 	public BerylIngot() {
         maxStackSize = 64;
-        setUnlocalizedName("ItemBerylIngot");
         setCreativeTab(CreativeTabs.tabMaterials);
 }
 }

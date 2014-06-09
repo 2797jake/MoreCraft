@@ -165,6 +165,34 @@ public class OreGeneration implements IWorldGenerator
 			
 			(new WorldGenMinable(mod_morecraft.PlutoniumOre, 3)).generate(world, random, firstBlockXCoordd, firstBlockYCoordd, firstBlockZCoordd);
 		}
+		
+		
+		for(int p = 0; p<9;p++) //x<NUMBER is rarity
+		{
+			int firstBlockXCoordd = i + random.nextInt(16);
+			int firstBlockYCoordd = random.nextInt(64);//256, max y coordinate
+			int firstBlockZCoordd = j + random.nextInt(16);
+			
+			(new WorldGenMinable(mod_morecraft.ShadowCrystalOre, 3)).generate(world, random, firstBlockXCoordd, firstBlockYCoordd, firstBlockZCoordd);
+		}
+		
+		for(int p = 0; p<9;p++) //x<NUMBER is rarity
+		{
+			int firstBlockXCoordd = i + random.nextInt(16);
+			int firstBlockYCoordd = random.nextInt(64);//256, max y coordinate
+			int firstBlockZCoordd = j + random.nextInt(16);
+			
+			(new WorldGenMinable(mod_morecraft.BloodCrystalOre, 3)).generate(world, random, firstBlockXCoordd, firstBlockYCoordd, firstBlockZCoordd);
+		}
+		
+		for(int p = 0; p<9;p++) //x<NUMBER is rarity
+		{
+			int firstBlockXCoordd = i + random.nextInt(16);
+			int firstBlockYCoordd = random.nextInt(64);//256, max y coordinate
+			int firstBlockZCoordd = j + random.nextInt(16);
+			
+			(new WorldGenMinable(mod_morecraft.PowerCrystalOre, 3)).generate(world, random, firstBlockXCoordd, firstBlockYCoordd, firstBlockZCoordd);
+		}
 	}
 
 	private void generateInNether(World world, Random random, int i, int j) {

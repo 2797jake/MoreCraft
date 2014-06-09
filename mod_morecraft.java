@@ -4,6 +4,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.src.joakleymorecraft.beryl.BerylAxeClass;
 import net.minecraft.src.joakleymorecraft.beryl.BerylHoeClass;
@@ -156,7 +157,7 @@ public static void PreLoad(FMLPreInitializationEvent PreEvent){
 	public static Block PlutoniumOre;
 	
 	public static Item Plutonium;
-	public static ToolMaterial DrillMaterial = EnumHelper.addToolMaterial("DrillMaterial", 4/*mines obsidian*/, 4000/*max uses*/, 15F/*efficiency*/, 2/*damage*/, 20/*enchantability*/);
+	public static ToolMaterial DrillMaterial = EnumHelper.addToolMaterial("DrillMaterial", 4/*mines obsidian*/, 4000/*max uses*/, 15F/*efficiency*/, 2/*damage*/, 15/*enchantability*/);
 	
 	public static Item Drill = new Drill(DrillMaterial).setUnlocalizedName("Drill");
 	
@@ -185,9 +186,24 @@ public static void PreLoad(FMLPreInitializationEvent PreEvent){
 	public static Item OcelotStaff = new OcelotStaff().setUnlocalizedName("OcelotStaff").setTextureName(modid + ":OcelotStaff").setCreativeTab(CreativeTabs.tabMisc);
 	public static Item SheepStaff = new SheepStaff().setUnlocalizedName("SheepStaff").setTextureName(modid + ":SheepStaff").setCreativeTab(CreativeTabs.tabMisc);
 
+	public static Item DiaStick;
+	
+	public static Item Shield;
+	public static Item HermesBoots;
+	static ArmorMaterial HermesArmor = EnumHelper.addArmorMaterial("HermesMaterial", 20, new int[]{2, 6, 5, 2}, 20);
+	public static Item PowerPlateChest;
+	static ArmorMaterial PowerPlateArmor = EnumHelper.addArmorMaterial("PowerPlateMaterial", 20, new int[]{2, 6, 5, 2}, 20);
+	public static Item ShadowShiv;
+	public static ToolMaterial ShadowShivMaterial = EnumHelper.addToolMaterial("ShadowShivMaterial", 4/*mines obsidian*/, 2000/*max uses*/, 12F/*efficiency*/, 3/*damage*/, 25/*enchantability*/);
+
+	public static Block ShadowCrystalOre;
+	public static Block BloodCrystalOre;
+	public static Block PowerCrystalOre;
+	public static Item BloodCrystal;
+	public static Item PowerCrystal;
+	public static Item ShadowCrystal;
 	//public static Item CDia;
 	
-
 	/*public static void registerEntity(Class entityClass, String name)
 	{
 		int entityID = EntityRegistry.findGlobalUniqueEntityId();
@@ -203,6 +219,14 @@ public static void PreLoad(FMLPreInitializationEvent PreEvent){
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		//registerEntity(SuperZombie.class, "SuperZombie");
+		HermesBoots = new HermesArmor(HermesArmor, 3, "HermesBoots");
+		GameRegistry.registerItem(HermesBoots, "HermesBoots");
+		
+		PowerPlateChest = new PowerPlateArmor(PowerPlateArmor, 1, "PowerPlateChest");
+		GameRegistry.registerItem(PowerPlateChest, "PowerPlateChest");
+		
+		ShadowShiv = new ShadowShiv(ShadowShivMaterial).setUnlocalizedName("ShadowShiv").setTextureName("joakley_morecraft:ShadowShiv");
+		GameRegistry.registerItem(ShadowShiv,  "ShadowShiv");
 		
 		BerylOre = new BlockBerylOre().setBlockName("BerylOre").setBlockTextureName(modid + ":" + "BerylOre");
 		GameRegistry.registerBlock(BerylOre, "BerylOre");
@@ -485,18 +509,50 @@ public static void PreLoad(FMLPreInitializationEvent PreEvent){
 		GameRegistry.registerItem(HorseStaff, "HorseStaff");
 		GameRegistry.registerItem(OcelotStaff, "OcelotStaff");
 		GameRegistry.registerItem(SheepStaff, "SheepStaff");
+		
+		
+		
+		DiaStick = new DiaStick().setUnlocalizedName("DiaStick").setTextureName("joakley_morecraft:DiaStick");
+		GameRegistry.registerItem(DiaStick,  "DiaStick");
+		GameRegistry.addShapelessRecipe(new ItemStack(DiaStick), new ItemStack(Items.diamond, 1),new ItemStack(Items.diamond, 1),new ItemStack(Items.diamond, 1));
 		/*CDia = new CDia().setUnlocalizedName("CDia").setTextureName("joakley_morecraft:CDia");
 		GameRegistry.registerItem(CDia, "CDia");
-		GameRegistry.addShapelessRecipe(new ItemStack(CDia), new ItemStack(Items.diamond),new ItemStack(Items.diamond),new ItemStack(Items.diamond),new ItemStack(Items.diamond));
-*/
+		GameRegistry.addShapelessRecipe(new ItemStack(CDia), new ItemStack(Items.diamond),new ItemStack(Items.diamond),new ItemStack(Items.diamond),new ItemStack(Items.diamond));*/
+		Shield = new Shield().setUnlocalizedName("Shield").setTextureName("joakley_morecraft:Shield");
+		GameRegistry.registerItem(Shield,  "Shield");
+		GameRegistry.addShapelessRecipe(new ItemStack(DiaStick), new ItemStack(Items.diamond, 1),new ItemStack(Items.diamond, 1),new ItemStack(Items.diamond, 1));
+
 		
 		
+		PowerCrystalOre = new PowerCrystalOre().setBlockName("PowerCrystalOre").setBlockTextureName(modid + ":" + "PowerCrystalOre");
+		GameRegistry.registerBlock(PowerCrystalOre, "PowerCrystalOre");
+		GameRegistry.registerWorldGenerator(EXPOreWorldGen, 1);
+		
+		BloodCrystalOre = new BloodCrystalOre().setBlockName("BloodCrystalOre").setBlockTextureName(modid + ":" + "BloodCrystalOre");
+		GameRegistry.registerBlock(BloodCrystalOre, "BloodCrystalOre");
+		GameRegistry.registerWorldGenerator(EXPOreWorldGen, 1);
+		
+		ShadowCrystalOre = new ShadowCrystalOre().setBlockName("ShadowCrystalOre").setBlockTextureName(modid + ":" + "ShadowCrystalOre");
+		GameRegistry.registerBlock(ShadowCrystalOre, "ShadowCrystalOre");
+		GameRegistry.registerWorldGenerator(EXPOreWorldGen, 1);
 		
 		
+		ShadowCrystal = new BerylIngot().setUnlocalizedName("ShadowCrystal").setTextureName("joakley_morecraft:ShadowCrystal");
+		GameRegistry.registerItem(ShadowCrystal, "ShadowCrystal");
+		GameRegistry.addShapelessRecipe(new ItemStack(ShadowShiv), new ItemStack(Items.stick), new ItemStack(ShadowCrystal));
+
+		BloodCrystal = new BerylIngot().setUnlocalizedName("BloodCrystal").setTextureName("joakley_morecraft:BloodCrystal");
+		GameRegistry.registerItem(BloodCrystal, "BloodCrystal");
+		GameRegistry.addShapelessRecipe(new ItemStack(HermesBoots), new ItemStack(Items.leather),new ItemStack(Items.leather),new ItemStack(Items.leather),new ItemStack(Items.leather), new ItemStack(BloodCrystal));
+
+		PowerCrystal = new BerylIngot().setUnlocalizedName("PowerCrystal").setTextureName("joakley_morecraft:PowerCrystal");
+		GameRegistry.registerItem(PowerCrystal, "PowerCrystal");
+		GameRegistry.addShapelessRecipe(new ItemStack(PowerPlateChest), new ItemStack(Items.iron_ingot),new ItemStack(Items.iron_ingot),new ItemStack(Items.iron_ingot),new ItemStack(Items.iron_ingot),new ItemStack(Items.iron_ingot),new ItemStack(Items.iron_ingot),new ItemStack(Items.iron_ingot), new ItemStack(PowerCrystal));
+
 		
-		
-		
-		
+		GameRegistry.addShapelessRecipe(new ItemStack(Shield), new ItemStack(Blocks.obsidian),new ItemStack(Blocks.obsidian),new ItemStack(Blocks.obsidian),new ItemStack(Blocks.obsidian),new ItemStack(Items.diamond),
+				new ItemStack(Items.diamond),new ItemStack(Items.diamond),new ItemStack(Items.diamond),new ItemStack(Items.iron_ingot));
+
 		
 		//proxy.registerRenderers();
 		
