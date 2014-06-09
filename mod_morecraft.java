@@ -458,13 +458,13 @@ public static void PreLoad(FMLPreInitializationEvent PreEvent){
 		
 		
 		
-		Green = new Green().setBlockName("Green").setBlockTextureName(modid + ":" + "GreenBrick");
+		Green = new Green().setBlockName("Green").setBlockTextureName(modid + ":" + "Green");
 		GameRegistry.registerBlock(Green, "Green");
-		Blue = new Blue().setBlockName("Blue").setBlockTextureName(modid + ":" + "BlueBrick");
+		Blue = new Blue().setBlockName("Blue").setBlockTextureName(modid + ":" + "Blue");
 		GameRegistry.registerBlock(Blue, "Blue");
-		Yellow = new Yellow().setBlockName("Yellow").setBlockTextureName(modid + ":" + "YellowBrick");
+		Yellow = new Yellow().setBlockName("Yellow").setBlockTextureName(modid + ":" + "Yellow");
 		GameRegistry.registerBlock(Yellow, "Yellow");
-		Purple = new Purple().setBlockName("Purple").setBlockTextureName(modid + ":" + "PurpleBrick");
+		Purple = new Purple().setBlockName("Purple").setBlockTextureName(modid + ":" + "Purple");
 		GameRegistry.registerBlock(Purple, "Purple");
 		
 		
